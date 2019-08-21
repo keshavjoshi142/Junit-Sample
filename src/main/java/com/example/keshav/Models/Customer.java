@@ -1,6 +1,7 @@
 package com.example.keshav.Models;
 
 import lombok.Data;
+import lombok.NonNull;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,18 +10,19 @@ import javax.persistence.Table;
 
 @Data
 @Entity
-//@Table(name = "customer")
 public class Customer {
 
     @Id
-  //  @Column(name = "customerId")
-    int customerId;
+    private int customerId;
 
-   // @Column(name = "customerName")
-    String customerName;
+    private String customerName;
 
-  //  @Column(name = "customerAdd")
-    String customerAdd;
+    private String customerAdd;
+
+    private String customerPhNo;
+
+    public Customer() {
+    }
 
     public int getCustomerId() {
         return customerId;
@@ -54,8 +56,7 @@ public class Customer {
         this.customerPhNo = customerPhNo;
     }
 
-    //  @Column(name = "customerPhNo")
-    String customerPhNo;
+
 
 
 }

@@ -1,11 +1,13 @@
 package com.example.keshav.Service;
 import com.example.keshav.Models.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 @Service
+@ConditionalOnProperty(value = "kafka.server.enabled")
 public class Producer {
 
     private static final String TOPIC = "test1";

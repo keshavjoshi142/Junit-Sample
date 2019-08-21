@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <customer customer_id="1" customer_name ="keshav1" customer_ph_no="098765" customer_add="jio"/>
+    <customer customer_id="2" customer_name ="keshav2" customer_ph_no="098765" customer_add="jio"/>
+    <customer customer_id="3" customer_name ="keshav3" customer_ph_no="098765" customer_add="jio"/>
+    <customer customer_id="4" customer_name ="keshav4" customer_ph_no="098765" customer_add="jio"/>
+</dataset>

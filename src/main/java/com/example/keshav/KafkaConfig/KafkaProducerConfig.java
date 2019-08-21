@@ -4,6 +4,7 @@ import com.example.keshav.Models.Customer;
 import com.example.keshav.Service.Producer;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.annotation.EnableKafka;
@@ -17,6 +18,7 @@ import java.util.Map;
 
 @EnableKafka
 @Configuration
+@ConditionalOnProperty(value = "kafka.server.enabled")
 public class KafkaProducerConfig {
 
     @Bean
