@@ -17,9 +17,11 @@ import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.when;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.mockito.Spy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.boot.test.mock.mockito.SpyBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -49,7 +51,7 @@ public class AppControllerTest {
 
 
     @Test
-    public void testSaveCustomerWithAllField() throws Exception {
+    public void testPutConsumerAPI() throws Exception {
 
         Customer mockCustomer = new Customer();
         mockCustomer.setCustomerId(7);
@@ -60,29 +62,21 @@ public class AppControllerTest {
         when(appService.addCustomer(any(Customer.class))).thenReturn(mockCustomer);
 
         Customer aCustomer = new Customer();
-
-        String serialisedCustomer = objectMapper.writeValueAsString(aCustomer);
-        mockMvc.perform(post("/put/customer").contentType(MediaType.APPLICATION_JSON_VALUE).content(serialisedCustomer)).andExpect(status().isCreated()).andReturn();
-    }
-
-    @Test
-    public void testSaveCustomerWithoutCustomerName() throws Exception {
-
-        Customer mockCustomer = new Customer();
-
         mockCustomer.setCustomerId(7);
-        mockCustomer.setCustomerName("");
+        mockCustomer.setCustomerName("keshav");
         mockCustomer.setCustomerPhNo("12345678");
         mockCustomer.setCustomerAdd("Sarjapur");
 
-        when(appService.addCustomer(any(Customer.class))).thenReturn(mockCustomer);
-
-        Customer aCustomer = new Customer();
-
         String serialisedCustomer = objectMapper.writeValueAsString(aCustomer);
-        mockMvc.perform(post("/put/customer").contentType(MediaType.APPLICATION_JSON_VALUE).content(serialisedCustomer)).andExpect(status().isBadRequest()).andReturn();
 
+        mockMvc.perform(post("/put/customer")
+                .contentType(MediaType.APPLICATION_JSON_VALUE)
+                .content(serialisedCustomer))
+                .andExpect(status().isCreated())
+                .andReturn();
     }
+
+
 
 
 }

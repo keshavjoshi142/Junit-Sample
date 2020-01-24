@@ -2,6 +2,7 @@ package com.example.keshav.RepositoryTest;
 
 import com.example.keshav.Models.Customer;
 import com.example.keshav.Repositories.CustomerRepository;
+import com.github.springtestdbunit.DbUnitTestExecutionListener;
 import com.github.springtestdbunit.annotation.DatabaseSetup;
 import org.junit.Assert;
 import org.junit.Test;
@@ -16,11 +17,9 @@ import org.springframework.test.context.support.DirtiesContextTestExecutionListe
 import org.springframework.test.context.transaction.TransactionalTestExecutionListener;
 
 import javax.persistence.EntityManager;
-
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
-import com.github.springtestdbunit.DbUnitTestExecutionListener;
 
 
 @RunWith(SpringRunner.class)
@@ -42,7 +41,7 @@ public class CustomerRepositoryTest {
 
 
     @Test
-    public void testSaveCustomer() {
+    public void  testSaveCustomer() {
         Customer mockCustomer = new Customer();
         mockCustomer.setCustomerId(7);
         mockCustomer.setCustomerName("Shivani");
@@ -82,13 +81,13 @@ public class CustomerRepositoryTest {
 
         List<Customer> customers = (List<Customer>) customerRepository.findAll();
 
-        assertEquals(9 , customers.size());
+        assertEquals(14 , customers.size());
     }
 
     @Test
     public void testFindAllDBUnit() {
         List<Customer> customers = (List<Customer>) customerRepository.findAll();
-        assertEquals(3 , customers.size());
+        assertEquals(4 , customers.size());
     }
 
 }
